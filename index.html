@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel='icon' href='abbey-road-icon.jpg'>
+		<link rel='apple-touch-icon' href='abbey-road-icon.jpg'>
+		<meta name='apple-mobile-web-app-capable' content='yes'>
+		<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+		<style>
+			.album{
+				overflow-y: scroll;
+			}
+			::-webkit-scrollbar { 
+			    display: none; 
+			}
+			body{
+				position:relative;
+				background-color: #010101;
+				background-image: url(abbey-road.jpg);
+				background-size: width;
+				background-position: 100% 0%;
+				background-repeat: no-repeat;;
+				color: white;
+				min-width: 99%;
+				width: 100%;
+				min-height: 99%;
+				height: 100%;
+				overflow: hidden;
+				padding: -1%;
+				margin: -1%;
+			}
+			.padding{
+				padding: 32px;
+				font-size: 32px;
+			}
+		</style>
+		<script>
+			var songs = [];
+
+			function play(id){
+				document.getElementsByTagName("audio")[0].src = "songs/"+songs[songs.length-(id)]+".m4a";
+				document.getElementsByTagName("audio")[0].play();
+			}
+
+			function resize(){
+				var albumDivs = document.getElementsByClassName('album');
+				for(i=0;i<albumDivs.length;i++){
+					albumDivs[i].style.width = window.innerWidth+"px";
+					albumDivs[i].style.height = window.innerHeight+"px";
+				}
+				setTimeout(resize,250);
+			}
+
+			window.onload = function(){
+				resize();
+				var songDivs = document.getElementsByClassName('song');
+				for (var i = songDivs.length - 1; i >= 0; i--) {
+					songs.push(songDivs[i].id);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<audio src="songs/ar1.m4a"></audio>
+		<div class="abbey-road album" id="container">
+			<div class="padding">
+			<div class="pause-btn abbey-road" id="play-pause" style="font-size:64px;">
+					<a class="material-icons" onclick="document.getElementsByTagName('audio')[0].pause();">&#9646;&#9646;</i>
+					<a class="material-icons" onclick="document.getElementsByTagName('audio')[0].play();">&#9654;</i>
+				</div><br/><br/>
+				<div class="abbey-road song" id="ar1" onclick="play(1)">1. Come Together</div><br/>
+				<div class="abbey-road song" id="ar2" onclick="play(2)">2. Something</div><br/>
+				<div class="abbey-road song" id="ar3" onclick="play(3)">3. Maxwell's Silver Hammer</div><br/>
+				<div class="abbey-road song" id="ar4" onclick="play(4)">4. Oh! Darling</div><br/>
+				<div class="abbey-road song" id="ar5" onclick="play(5)">5. Octopus's Garden</div><br/>
+				<div class="abbey-road song" id="ar6" onclick="play(6)">6. I Want You (She's So Heavy)</div><br/>
+				<div class="abbey-road song" id="ar7" onclick="play(7)">7. Here Comes the Sun</div><br/>
+				<div class="abbey-road song" id="ar8" onclick="play(8)">8. Because</div><br/>
+				<div class="abbey-road song" id="ar9" onclick="play(9)">9. You Never Give Me Your Money</div><br/>
+				<div class="abbey-road song" id="ar10" onclick="play(10)">10. Sun King</a></div><br/>
+				<div class="abbey-road song" id="ar11" onclick="play(11)">11. Mean Mr. Mustard</div><br/>
+				<div class="abbey-road song" id="ar12" onclick="play(12)">12. Polythene Pam</div><br/>
+				<div class="abbey-road song" id="ar13" onclick="play(13)">13. She Came in Through the<br/><span class='padding'>Bathroom Window</div></span><br/>
+				<div class="abbey-road song" id="ar14" onclick="play(14)">14. Golden Slumbers</div><br/>
+				<div class="abbey-road song" id="ar15" onclick="play(15)">15. Carry That Weight</div><br/>
+				<div class="abbey-road song" id="ar16" onclick="play(16)">16. The End</div><br/>
+				<div class="abbey-road song" id="ar17" onclick="play(17)">17. Her Majesty</div><br/><br/>
+				<div class="pause-btn abbey-road" id="play-pause" style="font-size:64px;">
+					<a class="material-icons" onclick="document.getElementsByTagName('audio')[0].pause();">&#9646;&#9646;</i>
+					<a class="material-icons" onclick="document.getElementsByTagName('audio')[0].play();">&#9654;</i>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
